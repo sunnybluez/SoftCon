@@ -13,26 +13,16 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="651.0" prefWidth="967.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.presentation.controller.CanvasController">
    <children>
-      <Button layoutX="780.0" layoutY="326.0" mnemonicParsing="false" onAction="#recognize" prefHeight="55.0" prefWidth="115.0" text="Recognize" />
-      <Button layoutX="780.0" layoutY="419.0" mnemonicParsing="false" onAction="#savePicture" prefHeight="55.0" prefWidth="115.0" text="Save" />
-      <AnchorPane fx:id="recognitionBord" layoutX="23.0" layoutY="160.0" prefHeight="478.0" prefWidth="656.0">
+      <Button layoutX="376.0" layoutY="52.0" mnemonicParsing="false" onAction="#recognize" prefHeight="55.0" prefWidth="115.0" text="Recognize" />
+      <Button layoutX="191.0" layoutY="52.0" mnemonicParsing="false" onAction="#savePicture" prefHeight="55.0" prefWidth="115.0" text="Save" />
+      <AnchorPane fx:id="recognitionBord" layoutX="48.0" layoutY="150.0" prefHeight="478.0" prefWidth="656.0">
          <children>
             <Canvas fx:id="canvas_background" height="478.0" onMouseDragged="#canvasMouseMove" onMousePressed="#canvasMouseDown" onMouseReleased="#canvasMouseUp" style="-fx-border-width: 10px; -fx-border-color: black;" width="656.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="478.0" stroke="BLACK" strokeType="INSIDE" width="656.0" />
             <Canvas fx:id="canvas" height="478.0" onMouseDragged="#canvasMouseMove" onMousePressed="#canvasMouseDown" onMouseReleased="#canvasMouseUp" style="-fx-border-width: 10px; -fx-border-color: black;" width="656.0" />
          </children></AnchorPane>
-      <Button layoutX="780.0" layoutY="170.0" mnemonicParsing="false" onAction="#clearCanvas" prefHeight="55.0" prefWidth="115.0" text="Clear" />
-      <Button layoutX="780.0" layoutY="522.0" mnemonicParsing="false" onAction="#newPic" prefHeight="55.0" prefWidth="115.0" text="New" />
-      <MenuBar prefHeight="32.0" prefWidth="967.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="New Picture" />
-                  <MenuItem mnemonicParsing="false" text="Save Picture" />
-               </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-      <ChoiceBox fx:id="picChoiceBox" layoutX="805.0" layoutY="98.0" onAction="#loadPic" prefWidth="150.0" />
+      <Button layoutX="564.0" layoutY="52.0" mnemonicParsing="false" onAction="#clearCanvas" prefHeight="55.0" prefWidth="115.0" text="Clear" />
+      <Button layoutX="23.0" layoutY="52.0" mnemonicParsing="false" onAction="#newPic" prefHeight="55.0" prefWidth="115.0" text="New" />
+      <ChoiceBox fx:id="picChoiceBox" layoutX="780.0" layoutY="65.0" onAction="#loadPic" prefWidth="150.0" />
    </children>
 </AnchorPane>
