@@ -5,9 +5,11 @@ import client.presentation.quantity.GraphType;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import server.data.PictureDao;
+import server.entity.Coordinate;
 import server.entity.Picture;
 
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,43 +21,24 @@ public class PictureService {
     /**
      * @param image 待识别图片流
      * @return  识别信息string
+     *
+     * 识别算法
      */
     public static String recognize(Image image){
+        ArrayList<Integer> rect = calcuRect(image);
+
+        int top = rect.get(0);
+        int buttom = rect.get(1);
+        int left = rect.get(2);
+        int right = rect.get(3);
+
+        double area_rect = (buttom-top + 1) * (right - left +1);
+
         BufferedImage bi = (BufferedImage) SwingFXUtils.fromFXImage(image, null);
 
         //获取图像的宽度和高度
         int width = bi.getWidth();
         int height = bi.getHeight();
-
-
-
-        int count = 0;
-        int top = 0;
-        int buttom = 0;
-        int left = 0;
-        int right = 0;
-
-        for(int i=0;i<height;i++){
-            for(int j=0;j<width;j++){//行扫描
-                int dip = bi.getRGB(j, i);
-                if(dip!= -1){
-                    if(count==0){
-                        top = i;
-                        buttom = i;
-                        left = j;
-                        right = j;
-                        count++;
-                    }else {
-                        if(buttom<i) buttom = i;
-                        if(left>j) left = j;
-                        if(right<j) right = j;
-                    }
-                }
-            }
-
-        }
-        double area_rect = (buttom-top + 1) * (right - left +1);
-
         double area = 0;
         for(int i=0;i<height;i++) {
             int count_temp = 0;
@@ -137,6 +120,55 @@ public class PictureService {
         Picture picSelected = PictureDao.findPicture(picId);
         return picSelected;
 
+    }
+
+
+    /**
+     * @param image_recognized
+     * @return
+     *  计算外围矩形的算法 （用于recognize）
+     */
+    public static ArrayList<Integer> calcuRect(Image image_recognized){
+        BufferedImage bi = (BufferedImage) SwingFXUtils.fromFXImage(image_recognized, null);
+
+        //获取图像的宽度和高度
+        int width = bi.getWidth();
+        int height = bi.getHeight();
+
+
+
+        int count = 0;
+        int top = 0;
+        int buttom = 0;
+        int left = 0;
+        int right = 0;
+
+        for(int i=0;i<height;i++){
+            for(int j=0;j<width;j++){//行扫描
+                int dip = bi.getRGB(j, i);
+                if(dip!= -1){
+                    if(count==0){
+                        top = i;
+                        buttom = i;
+                        left = j;
+                        right = j;
+                        count++;
+                    }else {
+                        if(buttom<i) buttom = i;
+                        if(left>j) left = j;
+                        if(right<j) right = j;
+                    }
+                }
+            }
+
+        }
+
+        ArrayList<Integer> rect = new ArrayList<>();
+        rect.add(top);
+        rect.add(buttom);
+        rect.add(left);
+        rect.add(right);
+        return rect;
     }
 
 
