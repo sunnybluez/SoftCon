@@ -3,6 +3,9 @@ package server.entity;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * 图片的数据类 持有shape的list id
+ */
 public class Picture implements Serializable{
 
     private String id;

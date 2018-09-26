@@ -3,6 +3,9 @@ package server.entity;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * 图形  持有 Coordinate
+ */
 public class Shape implements Serializable{
 
 //    private location
@@ -48,6 +51,10 @@ public class Shape implements Serializable{
         this.type = type;
     }
 
+    /**
+     * @param coordinatesAll 坐标信息
+     * @return  重心
+     */
     public Coordinate calculateBarycenter(List<List<Coordinate>> coordinatesAll){
         int sizeCoordinates = 0;
         double xAll = 0;

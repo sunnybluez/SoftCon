@@ -17,6 +17,11 @@ public class Main extends Application {
     }
 
 
+    /**
+     * @param args
+     *
+     * main方法初始化
+     */
     public static void main(String[] args) {
         launch(args);
     }

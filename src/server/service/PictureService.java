@@ -10,9 +10,16 @@ import server.entity.Picture;
 import java.awt.image.BufferedImage;
 import java.util.List;
 
+/**
+ * 后端逻辑类
+ */
 public class PictureService {
 
 
+    /**
+     * @param image 待识别图片流
+     * @return  识别信息string
+     */
     public static String recognize(Image image){
         BufferedImage bi = (BufferedImage) SwingFXUtils.fromFXImage(image, null);
 
@@ -107,16 +114,25 @@ public class PictureService {
     }
 
 
-
+    /**
+     * @param picture 待图片
+     */
     public static void savePicture(Picture picture){
         PictureDao.updatePicture(picture);
     }
 
+    /**
+     * @return 所有图片id列表
+     */
     public static List<String> findAllPicId(){
         List picList = PictureDao.findAllPicId();
         return  picList;
     }
 
+    /**
+     * @param picId 图片ID
+     * @return  Picture
+     */
     public static Picture findPicture(String picId){
         Picture picSelected = PictureDao.findPicture(picId);
         return picSelected;

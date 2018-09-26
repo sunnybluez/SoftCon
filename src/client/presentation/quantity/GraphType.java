@@ -1,5 +1,8 @@
 package client.presentation.quantity;
 
+/**
+ * 枚举类  区别 几种形状
+ */
 public enum GraphType {
     Rect("长方形"),
     Circle("圆"),
