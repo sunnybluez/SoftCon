@@ -75,6 +75,7 @@ public class PictureService {
                 }
 
             }
+            
 
             if(left_j !=right_j){
                 int row_all =  width - count_line - left_j - (width - right_j - 1);
